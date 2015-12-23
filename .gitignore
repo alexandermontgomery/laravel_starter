@@ -1,0 +1,7 @@
+assets/*
+docker_data/mysql/*
+react/node_modules/*
+target
+.DS_Store
+public/*
+vendor/*

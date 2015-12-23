@@ -1,0 +1,44 @@
+mysql:
+  image: mysql:5.7
+  env_file:
+    - ./docker_images/mysql/mysql.env
+  ports:
+    - "3306:3306"
+php-fpm:
+  image: php:7.0.1-fpm
+  ports:
+    - "9000:9000"
+  volumes:
+    - ./:/var/www/html
+    - ./docker_images/php/fpm/www.conf:/etc/php-fpm.d/www.conf
+    - ./docker_images/php/fpm/php-fpm.conf:/usr/local/etc/php-fpm.conf
+    - ./docker_data/php-fpm:/logs
+  links:
+    - mysql
+nginx:
+  image: nginx:1.9.9
+  ports:
+    - "8080:80"
+  volumes:
+    - ./docker_images/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+    - ./docker_images/nginx/conf/fastcgi_params:/etc/nginx/fastcgi_params
+    - ./docker_data/nginx:/logs
+  links:
+    - php-fpm        
+npm:
+  image: node:5.3
+  volumes:
+     - .:/data
+  working_dir: /data/react
+composer:
+  image: dylanlindgren/docker-laravel-composer
+  volumes:
+    - .:/data
+  working_dir: /data
+artisan:  
+  image: dylanlindgren/docker-laravel-artisan
+  volumes:
+    - .:/data
+  working_dir: /data
+  links:
+    - mysql
