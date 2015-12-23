@@ -1,7 +1,7 @@
 {
-  "name": "halligan",
+  "name": "laravel_starter",
   "version": "0.2.0",
-  "description": "React code for Halligan",
+  "description": "React code for Laravel Starter",
   "dependencies": {
     "react": "0.14.*",
     "react-bootstrap" : "0.24.*",

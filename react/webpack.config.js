@@ -12,7 +12,7 @@ module.exports = {
         main: './src/main/main.js'
     },
     output: {
-        path: '../assets/',
+        path: '../resources/assets/',
         filename: '[name].[hash].js'
     },
     module : {

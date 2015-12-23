@@ -26,6 +26,11 @@ docker-compose run composer install
 ```
 ### Build Client Side App
 To build the front end assets you can run the following
+* Install Dependencies
+```
+docker-compose run npm npm install
+```
+* Run Webpack
 ```
 docker-compose run npm npm run build
 ```
